@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import java.nio.charset.StandardCharsets
+import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
 import javax.crypto.SecretKey
@@ -71,7 +72,7 @@ class JwtUtil(
     fun validateToken(token:String,userDetails:UserDetails)
     = getLoginId(token) == userDetails.username && !isExpired(token);
 
-    fun getExpiredAt()
+    fun getExpiredAt() : LocalDateTime
     = getAccessTokenExpiredAt().toInstant()
         .atZone(ZoneId.systemDefault())
         .toLocalDateTime();

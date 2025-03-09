@@ -11,9 +11,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 class BaseUserEntity (
     @CreatedBy
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "created_by")
-    protected var createdBy: User,
+    var createdBy: User,
     @LastModifiedBy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updated_by")
-    protected var updatedBy: User
+    var updatedBy: User
 )
